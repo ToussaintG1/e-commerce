@@ -21,14 +21,30 @@ Product.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    product_name: {
+    price: {
       type: DataTypes.DECIMAL,
-      allowNull: false
+      allowNull: false,
       validate: {
-        isEmail: true,
+        isDecimal: true    
       },
     },
+    stock: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      defaultValue: 10,
+      validate: {
+        isNumeric: true,
+    },
   },
+  category_id: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'category',
+      key: 'id',
+    },
+  },
+},
   {
     sequelize,
     timestamps: false,
