@@ -15,7 +15,10 @@ router.get('/', (req, res) => {
   ],
   })
   .then ((products) => res.json(products))
-  .catch ((error) => res.status(400).json(error))
+  .catch ((error) => {
+    console.log(error)
+    res.status(400).json(error)
+  })
 });
 
 // get one product
